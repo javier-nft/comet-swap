@@ -9,7 +9,7 @@ export const Home = () => {
           <div className='flex items-start sm:items-center h-full sm:w-1/2 sm:bg-center'>
             <div className='flex flex-col gap-2 max-w-[70sch] text-center sm:text-left text-xl font-medium md:text-2xl lg:text-3xl'>
               <div>
-                <h1 className='text-gray-500'>Comet Swap</h1>
+                <h1 className='text-emerald-600'>Comet Swap</h1>
                 <p className='text-gray-400'>
                   The ultimate DEX aggregator
                   <br className='hidden xl:block' />
