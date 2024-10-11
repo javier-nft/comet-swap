@@ -27,7 +27,7 @@ export const Home = () => {
             </div>
           </div>
 
-          <div className='flex items-center h-4/6 bg-contain bg-no-repeat w-fit bg-center'>
+          <div className='flex items-center bg-contain bg-no-repeat w-fit bg-center'>
             <SwapTool />
           </div>
         </div>

@@ -47,12 +47,12 @@ export const Header = () => {
   };
 
   return (
-    <header className='flex flex-row items-center justify-between pl-3 pr-3 pt-1 sm:pl-6 sm:pr-6 sm:pt-6'>
+    <header className='flex flex-row items-center justify-between pl-3 pr-3 pt-1 sm:pl-6 sm:pr-6 sm:pt-2'>
       <MxLink
         className='flex items-center justify-between'
         to={RouteNamesEnum.home}
       >
-        <img src={CometLogo} className='w-16' />
+        <img src={CometLogo} className='w-full h-16' />
       </MxLink>
 
       <nav className='h-full w-full text-sm sm:relative sm:left-auto sm:top-auto sm:flex sm:w-auto sm:flex-row sm:justify-end sm:bg-transparent'>

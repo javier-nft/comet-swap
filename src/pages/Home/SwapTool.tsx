@@ -1,6 +1,7 @@
 import {
   faArrowsUpDown,
   faMeteor,
+  faSpinner,
   faWallet
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +14,12 @@ import {
 import { NonFungibleTokenOfAccountOnNetwork } from '@multiversx/sdk-network-providers/out';
 import BigNumber from 'bignumber.js';
 import { AmountSelector, Button, FormatAmount } from 'components';
-import { TOKENS, dexAggregatorScAddress, nativeChainCoin } from 'config';
+import {
+  TOKENS,
+  dexAggregatorDynamicRoutingEnabled,
+  dexAggregatorScAddress,
+  nativeChainCoin
+} from 'config';
 import {
   DexAggregatorSwapEvaluationOut,
   estimateAmountOut,
@@ -259,6 +265,15 @@ export const SwapTool = () => {
         </div>
       )}
 
+      {isFetchingEvaluation && (
+        <FontAwesomeIcon
+          icon={faSpinner}
+          spin
+          className='text-emerald-500'
+          size='lg'
+        />
+      )}
+
       {swapEstimation && (
         <div className='flex gap-2 items-center text-gray-200'>
           <div
@@ -269,39 +284,49 @@ export const SwapTool = () => {
             onClick={() => setSelectedEvaluation('static')}
           >
             <span>Static</span>
-            <div>{swapEstimation.static?.net_human_amount_out || '-'}</div>
+
             {swapEstimation.static && (
               <div>
-                Tx fee:{' '}
                 <FormatAmount
-                  value={swapEstimation.static.estimated_tx_fee_egld}
-                  showLabel={false}
-                />{' '}
-                {nativeChainCoin}
+                  value={swapEstimation.static.net_amount_out}
+                  decimals={selectedOutputToken.decimals}
+                  token={selectedOutputToken.id.split('-')[0]}
+                />
+
+                <div>
+                  Tx fee:{' '}
+                  <FormatAmount
+                    value={swapEstimation.static.estimated_tx_fee_egld}
+                    showLabel={false}
+                  />{' '}
+                  {nativeChainCoin}
+                </div>
               </div>
             )}
           </div>
 
-          <div
-            className={`flex flex-col gap-2 border border-2 border-gray-500/50 rounded rounded-lg p-2 cursor-pointer
+          {dexAggregatorDynamicRoutingEnabled && (
+            <div
+              className={`flex flex-col gap-2 border border-2 border-gray-500/50 rounded rounded-lg p-2 cursor-pointer
             ${
               evaluation === swapEstimation.dynamic ? 'border-emerald-500' : ''
             }`}
-            onClick={() => setSelectedEvaluation('dynamic')}
-          >
-            <span>Dynamic</span>
-            <div>{swapEstimation.dynamic?.net_human_amount_out || '-'}</div>
-            {swapEstimation.dynamic && (
-              <div>
-                Tx fee:{' '}
-                <FormatAmount
-                  value={swapEstimation.dynamic.estimated_tx_fee_egld}
-                  showLabel={false}
-                />{' '}
-                {nativeChainCoin}
-              </div>
-            )}
-          </div>
+              onClick={() => setSelectedEvaluation('dynamic')}
+            >
+              <span>Dynamic</span>
+              <div>{swapEstimation.dynamic?.net_human_amount_out || '-'}</div>
+              {swapEstimation.dynamic && (
+                <div>
+                  Tx fee:{' '}
+                  <FormatAmount
+                    value={swapEstimation.dynamic.estimated_tx_fee_egld}
+                    showLabel={false}
+                  />{' '}
+                  {nativeChainCoin}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
 
