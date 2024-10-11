@@ -14,15 +14,17 @@ import { NonFungibleTokenOfAccountOnNetwork } from '@multiversx/sdk-network-prov
 import BigNumber from 'bignumber.js';
 import { AmountSelector, Button, FormatAmount } from 'components';
 import { TOKENS, dexAggregatorScAddress, nativeChainCoin } from 'config';
-import { sendTransactions } from 'helpers';
-import { fetchAllTokensBalances } from 'helpers';
-import { DexAggregatorSwapEvaluationOut, estimateAmountOut } from 'helpers';
+import {
+  DexAggregatorSwapEvaluationOut,
+  estimateAmountOut,
+  fetchAllTokensBalances,
+  sendTransactions
+} from 'helpers';
 import { useGetAccount, useGetIsLoggedIn } from 'hooks';
 import { useEffect, useState } from 'react';
 import { Token } from 'types';
 import { useDebouncedCallback } from 'use-debounce';
-import { Address } from 'utils';
-import { getTransactionFactory } from 'utils';
+import { Address, getTransactionFactory } from 'utils';
 import { TokenSelector } from '../../components/TokenSelector/TokenSelector';
 
 export const SwapTool = () => {
@@ -36,6 +38,7 @@ export const SwapTool = () => {
   >('static');
   const [swapEstimation, setSwapEstimation] =
     useState<DexAggregatorSwapEvaluationOut | null>();
+  const [isFetchingEvaluation, setIsFetchingEvaluation] = useState(false);
 
   const { address } = useGetAccount();
 
@@ -86,13 +89,19 @@ export const SwapTool = () => {
 
   async function doFetchSwapEvaluation() {
     if (tokenAmountIn) {
-      const estimation = await estimateAmountOut(
-        selectedInputToken.id,
-        tokenAmountIn,
-        selectedOutputToken.id
-      );
+      setIsFetchingEvaluation(true);
 
-      setSwapEstimation(estimation);
+      try {
+        const estimation = await estimateAmountOut(
+          selectedInputToken.id,
+          tokenAmountIn,
+          selectedOutputToken.id
+        );
+
+        setSwapEstimation(estimation);
+      } finally {
+        setIsFetchingEvaluation(false);
+      }
     } else {
       setSwapEstimation(undefined);
     }
@@ -180,11 +189,12 @@ export const SwapTool = () => {
 
   return (
     <div className='flex flex-col gap-5 items-center bg-emerald-900/25 rounded rounded-xl px-5 py-5 m-auto border border-emerald-900/50 border-2 w-fit shadow shadow-lg shadow-black'>
-      <div className='flex text-white'>
-        Swap tokens at the best rate using opendex-aggregator
+      <div className='flex flex-col items-center text-white'>
+        <div>Swap tokens at the best rate</div>
+        <div>using opendex-aggregator</div>
       </div>
 
-      <div className='flex gap-2 items-center'>
+      <div className='flex gap-2 items-center self-stretch justify-end'>
         <AmountSelector
           denomination={selectedInputToken.decimals}
           invalid={false}
@@ -221,7 +231,7 @@ export const SwapTool = () => {
         </Button>
       </div>
 
-      <div className='flex gap-2 items-center'>
+      <div className='flex gap-2 items-center self-stretch justify-end'>
         <AmountSelector
           denomination={selectedOutputToken.decimals}
           disabled

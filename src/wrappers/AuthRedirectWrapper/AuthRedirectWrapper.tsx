@@ -16,7 +16,7 @@ export const AuthRedirectWrapper = ({
 
   useEffect(() => {
     if (isLoggedIn && !requireAuth) {
-      navigate(RouteNamesEnum.dashboard);
+      navigate(RouteNamesEnum.home);
 
       return;
     }

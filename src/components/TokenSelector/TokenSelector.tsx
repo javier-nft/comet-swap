@@ -21,7 +21,7 @@ export const TokenSelector = ({
   return (
     <div className='flex px-2 bg-black/50 rounded rounded-lg'>
       <select
-        className='flex py-2  rounded rounded-lg bg-transparent text-white focus:border-none'
+        className='flex py-2 rounded rounded-lg bg-transparent text-white focus:border-none'
         value={value.id}
         onChange={(e) => onSelectChanged(e)}
       >
