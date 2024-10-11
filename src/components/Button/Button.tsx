@@ -3,7 +3,7 @@ import { WithClassnameType } from 'types';
 
 interface ButtonType extends WithClassnameType, PropsWithChildren {
   active?: boolean;
-  color?: 'gray' | 'orange';
+  color?: 'gray' | 'emerald';
   onClick: (e: MouseEvent) => void;
   disabled?: boolean;
   dataTestId?: string;
@@ -17,7 +17,7 @@ interface ButtonType extends WithClassnameType, PropsWithChildren {
 export const Button = ({
   active = true,
   children,
-  color = 'orange',
+  color = 'emerald',
   onClick,
   disabled = false,
   type = 'button',
