@@ -1016,10 +1016,10 @@
   resolved "https://registry.yarnpkg.com/@multiversx/sdk-bls-wasm/-/sdk-bls-wasm-0.3.5.tgz#2e83308fdc7a0928c6d5a7f910d796fd8eb2d90b"
   integrity sha512-c0tIdQUnbBLSt6NYU+OpeGPYdL0+GV547HeHT8Xc0BKQ7Cj0v82QUoA2QRtWrR1G4MNZmLsIacZSsf6DrIS2Bw==
 
-"@multiversx/sdk-core@13.7.0":
-  version "13.7.0"
-  resolved "https://registry.yarnpkg.com/@multiversx/sdk-core/-/sdk-core-13.7.0.tgz#7a93fac0057d81b10d2f3eacec1417cf5d3855c8"
-  integrity sha512-79hy6fP1FpSKZ0kmcvLUQ3nbgzWYDt6uVRQS8NejLAw/J8Cgi3QQIOlFx5JvxS7t5cLUzPS7ovftFz1PTJdLuA==
+"@multiversx/sdk-core@13.8.0":
+  version "13.8.0"
+  resolved "https://registry.yarnpkg.com/@multiversx/sdk-core/-/sdk-core-13.8.0.tgz#75f9c2d450d7a7ed8d79abf7bdee16dc54fd51bb"
+  integrity sha512-V1PMh4QjRAydtRaBjWsEE3xqXSdYvVI5sYchOQr2ls6fPfBg1GEZRWRMI9mO19L+wg6+bwU9PChQiVRO1Ynjog==
   dependencies:
     "@multiversx/sdk-transaction-decoder" "1.0.2"
     bech32 "1.1.4"
@@ -1033,10 +1033,10 @@
   resolved "https://registry.yarnpkg.com/@multiversx/sdk-dapp-utils/-/sdk-dapp-utils-0.1.0.tgz#3103c2ffc648703e75f96acd229af299cb0840ab"
   integrity sha512-EFvktZ/S1WQ1ie02nnKZHARC4r23JZWwoTFd5py1qi/Z/UoLHIzJ394HLjXFb6gBTsp4wnvNwIXBA/DNrd2Yeg==
 
-"@multiversx/sdk-dapp@2.40.10":
-  version "2.40.10"
-  resolved "https://registry.yarnpkg.com/@multiversx/sdk-dapp/-/sdk-dapp-2.40.10.tgz#fe852fc300765ef02430fc025eab99158dee1f40"
-  integrity sha512-jOLIwyPolFRMSjt8/sW1pRrxnwikJrzIAnqcjCCmNx6QhTcz/5Qfjk6F59LFxsSVkLg0mUkM9a9xesxAJndmlg==
+"@multiversx/sdk-dapp@2.40.11":
+  version "2.40.11"
+  resolved "https://registry.yarnpkg.com/@multiversx/sdk-dapp/-/sdk-dapp-2.40.11.tgz#30d06a276aa54cd23a62330ff5b78da5ff581aa1"
+  integrity sha512-TBvZpvWDAWHoEw5ydDKQExVjSB54+jkzxWxZdttmLHKHK9W8Bk9dAbfD6CrN1AgKvbk3lz9JMCdh7mtqQYG63w==
   dependencies:
     "@lifeomic/axios-fetch" "3.0.1"
     "@metamask/providers" "16.0.0"
