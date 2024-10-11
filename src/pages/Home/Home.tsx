@@ -5,7 +5,7 @@ export const Home = () => {
   return (
     <AuthRedirectWrapper requireAuth={false}>
       <PageWrapper>
-        <div className='flex flex-col-reverse sm:flex-row items-center h-full w-full'>
+        <div className='flex flex-col gap-2 sm:flex-row items-center sm:h-full w-full'>
           <div className='flex items-start sm:items-center h-full sm:w-1/2 sm:bg-center'>
             <div className='flex flex-col gap-2 max-w-[70sch] text-center sm:text-left text-xl font-medium md:text-2xl lg:text-3xl'>
               <div>
@@ -26,7 +26,8 @@ export const Home = () => {
               </div>
             </div>
           </div>
-          <div className='flex items-center h-4/6  bg-contain bg-no-repeat w-1/2 bg-center'>
+
+          <div className='flex items-center h-4/6 bg-contain bg-no-repeat w-fit bg-center'>
             <SwapTool />
           </div>
         </div>

@@ -194,7 +194,7 @@ export const SwapTool = () => {
         <div>using opendex-aggregator</div>
       </div>
 
-      <div className='flex gap-2 items-center self-stretch justify-end'>
+      <div className='flex flex-col-reverse md:flex-row gap-2 items-center self-stretch justify-end'>
         <AmountSelector
           denomination={selectedInputToken.decimals}
           invalid={false}
@@ -231,7 +231,7 @@ export const SwapTool = () => {
         </Button>
       </div>
 
-      <div className='flex gap-2 items-center self-stretch justify-end'>
+      <div className='flex flex-col-reverse md:flex-row gap-2 items-center self-stretch justify-end'>
         <AmountSelector
           denomination={selectedOutputToken.decimals}
           disabled
